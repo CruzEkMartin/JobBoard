@@ -11,8 +11,21 @@ class JobsController extends Controller
     //
 
     public function single($id){
+
         $job = Job::find($id);
 
-        return view ('jobs.single', compact('job'));
+        $relatedJobs = Job::where('category', $job->category)
+        ->where('id', '!=', $id)
+        ->take(5)
+        ->get();
+
+        $relatedJobsCount =  $relatedJobs->count();
+
+        return view ('jobs.single', compact('job', 'relatedJobs', 'relatedJobsCount'));
     }
+
+    public function saveJob(){
+
+    }
+
 }

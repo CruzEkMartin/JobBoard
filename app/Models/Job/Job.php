@@ -27,5 +27,8 @@ class Job extends Model
         'education_experience',
         'otherbenifits',
         'image',
+        'category',
     ];
+
+    public $timestamps = true;
 }
