@@ -18,6 +18,14 @@
         </div>
     </section>
 
+    <div class="container">
+    @if (\Session::has('save'))
+    <div class="alert alert-success">
+        <p>{!! \Session::get('save') !!}</p>
+    </div>
+    @endif
+    </div>
+
     <section class="site-section">
         <div class="container">
             <div class="row align-items-center mb-5">
@@ -70,14 +78,20 @@
                             <div class="col-6">
                                 <form action="{{ route('save.job') }}" method="POST">
                                 @csrf
-                                <input type="text" name="job_id" id="" value="{{ $job->id }}">
-                                <input type="text" name="job_user" id="" value="{{ Auth::user()->id }}">
-                                <input type="text" name="job_image" id="" value="{{ $job->image }}">
-                                <input type="text" name="job_title" id="" value="{{ $job->job_title }}">
-                                <input type="text" name="job_region" id="" value="{{ $job->job_region }}">
-                                <input type="text" name="job_type" id="" value="{{ $job->job_type }}">
-                                <input type="text" name="job_company" id="" value="{{ $job->company }}">
-                                <button name="submit" type="submit" class="btn btn-block btn-light btn-md"><i class="icon-heart"></i>Save Job</button>
+                                <input type="hidden" name="job_id" id="" value="{{ $job->id }}">
+                                <input type="hidden" name="user_id" id="" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="job_image" id="" value="{{ $job->image }}">
+                                <input type="hidden" name="job_title" id="" value="{{ $job->job_title }}">
+                                <input type="hidden" name="job_region" id="" value="{{ $job->job_region }}">
+                                <input type="hidden" name="job_type" id="" value="{{ $job->job_type }}">
+                                <input type="hidden" name="company" id="" value="{{ $job->company }}">
+
+                                @if ($savedJob > 0)
+                                <button class="btn btn-block btn-success btn-md" disabled> you saved this job</button>
+                                @else
+                                <button name="submit" type="submit" class="btn btn-block btn-light btn-md"><i class="icon-heart"></i> Save Job</button>
+                                @endif
+
                                 <!--add text-danger to it to make it read-->
                                 </form>
 
