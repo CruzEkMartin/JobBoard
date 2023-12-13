@@ -6,6 +6,7 @@ use App\Models\Job\Job;
 use App\Models\Job\JobSaved;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category\Category;
 use App\Models\Job\Application;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +30,17 @@ $savedJob = JobSaved::where('job_id', $id)
 ->where('user_id', Auth::user()->id)
 ->count();
 
-        return view ('jobs.single', compact('job', 'relatedJobs', 'relatedJobsCount', 'savedJob'));
+//verifing if user applied to job
+$appliedJob = Application::where('job_id', $id)
+->where('user_id', Auth::user()->id)
+->count();
+
+//cateegories
+
+$categories = Category::all();
+
+
+        return view ('jobs.single', compact('job', 'relatedJobs', 'relatedJobsCount', 'savedJob', 'appliedJob', 'categories'));
     }
 
     public function saveJob(Request $request){

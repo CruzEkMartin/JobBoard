@@ -127,8 +127,14 @@
                                     <input type="hidden" name="job_region" id="" value="{{ $job->job_region }}">
                                     <input type="hidden" name="job_type" id="" value="{{ $job->job_type }}">
                                     <input type="hidden" name="company" id="" value="{{ $job->company }}">
+                                    @if ($appliedJob > 0)
+                                    <button class="btn btn-block btn-primary btn-md" disabled> you applied this
+                                        job</button>
+                                    @else
                                     <button name="submit" type="submit" class="btn btn-block btn-primary btn-md">Apply
                                         Now</button>
+                                    @endif
+
                                 </form>
                             </div>
 
@@ -157,12 +163,24 @@
                             </ul>
                         </div>
 
-                        <div class="bg-light p-3 border rounded">
+                        <div class="bg-light p-3 border rounded mb-4">
                             <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
                             <div class="px-3">
                                 <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
                                 <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
                                 <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="bg-light p-3 border rounded">
+                            <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categories</h3>
+                            <div class="list-unstyled pl-3 mb-0">
+                                @foreach ( $categories as $category )
+                                <li class="mb-2">
+                                <a href="{{ route('categories.single', $category->name) }}" class="text-decoration-none"> {{ $category->name }}</a>
+                                </li>
+                                @endforeach
+
                             </div>
                         </div>
 
