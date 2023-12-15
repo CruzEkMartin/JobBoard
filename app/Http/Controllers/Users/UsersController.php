@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Job\Application;
 use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
@@ -16,4 +17,13 @@ class UsersController extends Controller
 
         return view('users.profile', compact('profile'));
     }
+
+    public function applications(){
+
+        $applications = Application::where('user_id','=', Auth::user()->id)->get();
+
+        return view('users.applications', compact('applications'));
+    }
+
+
 }

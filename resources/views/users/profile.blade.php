@@ -9,23 +9,27 @@
         <div class="card p-3 py-4">
 
                 <div class="text-center">
-                    <img src="images/person_2.jpg" width="100" class="rounded-circle">
+                    <img src="{{ asset('assets/images_users/' . $profile->image .'' ) }}" width="100" class="rounded-circle">
                 </div>
 
                 <div class="text-center mt-3">
                     <!-- <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span> -->
                     <h5 class="mt-2 mb-0">{{ $profile->name }}</h5>
-                    <span>UI/UX Designer</span>
+                    <span>{{ $profile->job_title }}</span>
+
+                    <a href="{{ asset('assets/cvs/' . $profile->cv .'' ) }}" target="_blank" class="btn btn-success btn-block btn-lg">Download CV</a>
 
                     <div class="px-4 mt-1">
-                        <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p class="fonts">
+                            {{ $profile->bio }}
+                        </p>
 
                     </div>
 
                     <div class="px-3">
-                <a href="#" class="pt-3 pb-3 pr-3 pl-0 underline-none"><span class="icon-facebook"></span></a>
-                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                <a href="#" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                <a href="{{ $profile->facebook }}" class="pt-3 pb-3 pr-3 pl-0 underline-none"><span class="icon-facebook"></span></a>
+                <a href="{{ $profile->twitter }}" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
+                <a href="{{ $profile->linkedin }}" class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
             </div>
 
 

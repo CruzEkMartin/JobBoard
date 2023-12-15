@@ -49,7 +49,7 @@
 
                     <nav class="mx-auto site-navigation">
                         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-                            <li style="padding-left: 544px;" ><a href="index.html" class="nav-link active">Home</a></li>
+                            <li style="padding-left: 544px;" ><a href="{{ route('home') }}" class="nav-link active">Home</a></li>
                             <li><a href="about.html">About</a></li>
 
                             <li><a href="contact.html">Contact</a></li>
@@ -73,6 +73,10 @@
 
                                         <a class="dropdown-item" href="{{ route('profile') }}">
                                             Profile
+                                        </a>
+
+                                        <a class="dropdown-item" href="{{ route('applications') }}">
+                                            Applications
                                         </a>
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"

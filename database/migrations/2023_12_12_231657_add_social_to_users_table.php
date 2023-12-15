@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('twitter')->default("No twitter");
             $table->string('facebook')->default("No facebook");
             $table->string('linkedin')->default("No linkedin");
-            $table->string('image')->default("No linkedin");
+            $table->string('image')->default("default.png");
         });
     }
 
