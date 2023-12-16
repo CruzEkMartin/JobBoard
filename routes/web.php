@@ -33,3 +33,6 @@ Route::get('/categories/single/{name}', [App\Http\Controllers\Categories\Categor
 Route::get('/users/profile', [App\Http\Controllers\Users\UsersController::class, 'profile'])->name('profile');
 Route::get('/users/applications', [App\Http\Controllers\Users\UsersController::class, 'applications'])->name('applications');
 Route::get('/users/savedJobs', [App\Http\Controllers\Users\UsersController::class, 'savedJobs'])->name('saved.jobs');
+
+Route::get('/users/edit-details', [App\Http\Controllers\Users\UsersController::class, 'editDetails'])->name('edit.details');
+Route::post('/users/edit-details', [App\Http\Controllers\Users\UsersController::class, 'updateDetails'])->name('update.details');
